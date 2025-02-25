@@ -2,10 +2,14 @@ const data = require("./data/products.json");
 exports.getProductList = async (event) => {
   return {
     statusCode: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET",
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(data),
   };
 };
-
 
 module.exports.getProductsById = async (event) => {
   const { productId } = event.pathParameters;
@@ -21,7 +25,11 @@ module.exports.getProductsById = async (event) => {
 
   return {
     statusCode: 200,
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET",
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(product),
   };
 };
